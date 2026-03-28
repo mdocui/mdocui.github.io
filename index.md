@@ -57,22 +57,22 @@ Markdoc's `{% raw %}{% %}{% endraw %}` delimiters are unambiguous — they never
 | Package | Description | Status |
 |---------|-------------|--------|
 | [`@mdocui/core`](https://github.com/mdocui/mdocui/tree/main/packages/core) | Streaming parser, tokenizer, component registry, prompt generator | Stable |
-| [`@mdocui/react`](https://github.com/mdocui/mdocui/tree/main/packages/react) | React renderer, 22 default components, `useRenderer` hook | Stable |
+| [`@mdocui/react`](https://github.com/mdocui/mdocui/tree/main/packages/react) | React renderer, 24 default components, `useRenderer` hook | Stable |
 | [`@mdocui/cli`](https://github.com/mdocui/mdocui/tree/main/packages/cli) | Scaffold, generate system prompts, preview | Stable |
 
 ---
 
-## 22 Built-in Components
+## 24 Built-in Components
 
 **Layout:** `stack` `grid` `card` `divider` `accordion` `tabs` `tab`
 
-**Interactive:** `button` `button-group` `input` `select` `checkbox` `form`
+**Interactive:** `button` `button-group` `input` `textarea` `select` `checkbox` `toggle` `form`
 
 **Data:** `chart` `table` `stat` `progress`
 
 **Content:** `callout` `badge` `image` `code-block` `link`
 
-All components are bare-bone semantic HTML with `data-mdocui-*` attributes. Style them however you want.
+All components render theme-neutral semantic HTML with `data-mdocui-*` attributes. They use `currentColor` and `inherit` — no hardcoded colors. They adapt to any light or dark theme automatically. Pass `classNames` to the Renderer for Tailwind or custom CSS, or swap in your own components entirely.
 
 ---
 
