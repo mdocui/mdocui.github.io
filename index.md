@@ -58,7 +58,7 @@ Markdoc's `{% raw %}{% %}{% endraw %}` delimiters are unambiguous — they never
 |---------|-------------|--------|
 | [`@mdocui/core`](https://github.com/mdocui/mdocui/tree/main/packages/core) | Streaming parser, tokenizer, component registry, prompt generator | Stable |
 | [`@mdocui/react`](https://github.com/mdocui/mdocui/tree/main/packages/react) | React renderer, 22 default components, `useRenderer` hook | Stable |
-| `@mdocui/cli` | Scaffold, generate system prompts, preview | Planned |
+| [`@mdocui/cli`](https://github.com/mdocui/mdocui/tree/main/packages/cli) | Scaffold, generate system prompts, preview | Stable |
 
 ---
 
