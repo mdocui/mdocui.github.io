@@ -1,0 +1,33 @@
+# mdocUI
+
+> Generative UI library for LLMs using Markdoc {% %} tag syntax inline with markdown prose.
+
+## What it does
+
+mdocUI lets LLMs write natural markdown AND drop interactive UI components (charts, buttons, forms, tables, cards) in the same stream. The parser separates prose from component tags as tokens arrive. No custom DSL, no JSON blocks, no JSX.
+
+## Packages
+
+- @mdocui/core: Streaming parser, component registry, Zod validation, system prompt generator
+- @mdocui/react: React renderer, 24 theme-neutral components, useRenderer hook
+- @mdocui/cli: Scaffold projects, generate system prompts, preview
+
+## How to use
+
+1. Install: pnpm add @mdocui/core @mdocui/react
+2. Generate system prompt: generatePrompt(registry, { preamble, groups, rules, examples })
+3. Pass system prompt to any LLM (Anthropic, OpenAI, Google, etc.)
+4. Render streamed output: <Renderer nodes={nodes} components={defaultComponents} />
+
+## Syntax
+
+Self-closing: {% tagname attr="value" /%}
+With body: {% tagname %} content {% /tagname %}
+
+## Links
+
+- GitHub: https://github.com/mdocui/mdocui
+- npm: https://www.npmjs.com/org/mdocui
+- Documentation: https://mdocui.github.io
+- Examples: https://github.com/mdocui/examples
+- Skill file: https://github.com/mdocui/mdocui/blob/main/SKILL.md
