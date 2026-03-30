@@ -111,19 +111,12 @@ All components render theme-neutral semantic HTML with `data-mdocui-*` attribute
 
 ## How it works
 
-```
-LLM token stream
-      |
-  Tokenizer — character-by-character, IN_PROSE / IN_TAG / IN_STRING
-      |
-  StreamingParser — buffers incomplete tags, emits ASTNode[]
-      |
-  ComponentRegistry — validates props via Zod schemas
-      |
-  Renderer — maps AST to React components
-      |
-  Live UI
-```
+| Layer | Role |
+|-------|------|
+| **Tokenizer** | Character-by-character lexer, tracks `IN_PROSE` / `IN_TAG` / `IN_STRING` states |
+| **StreamingParser** | Buffers incomplete tags, merges prose, emits `ASTNode[]` |
+| **ComponentRegistry** | Validates tag names and props via Zod schemas |
+| **Renderer** | Maps AST nodes to React components with error boundaries and animations |
 
 The core is framework-agnostic pure TypeScript. React adapter ships today. Vue, Svelte, and Angular adapters can follow the same pattern.
 
