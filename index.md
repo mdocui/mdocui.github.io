@@ -201,4 +201,84 @@ onAction={(event) => {
 
 ---
 
+## Verbosity Prompt Modes
+
+`generatePrompt` accepts a `verbosity` option that controls the size of the generated system prompt:
+
+```typescript
+generatePrompt(registry, {
+  preamble: 'You are a helpful assistant.',
+  groups: defaultGroups,
+  verbosity: 'minimal',   // 'minimal' | 'default' | 'detailed'
+})
+```
+
+- **`minimal`** — compact prompt with just tag names and essential syntax. Best for models with small context windows or when you want to save tokens.
+- **`default`** — balanced prompt with component signatures and basic composition rules.
+- **`detailed`** — full prompt with all prop descriptions, examples, and composition guidance.
+
+---
+
+## contextData
+
+Pass arbitrary app-level data to all components via the Renderer:
+
+```tsx
+<Renderer
+  nodes={nodes}
+  components={defaultComponents}
+  contextData={{ userId: '123', theme: 'dark', locale: 'en-US' }}
+/>
+```
+
+Components receive `contextData` through the renderer context. Use it to pass user info, feature flags, or any data your custom components need without threading props through the LLM.
+
+---
+
+## Shimmer Placeholders
+
+While a component tag is still streaming in, mdocUI shows an animated shimmer placeholder. This gives users immediate visual feedback that a component is loading.
+
+The built-in `ComponentShimmer` renders three pulsing bars inside a bordered container, using `currentColor` so it adapts to any theme.
+
+To customize the loading state, pass `renderPendingComponent`:
+
+```tsx
+<Renderer
+  nodes={nodes}
+  components={defaultComponents}
+  isStreaming={isStreaming}
+  meta={meta}
+  renderPendingComponent={(pendingTag) => (
+    <div className="my-loading-skeleton">Loading {pendingTag}...</div>
+  )}
+/>
+```
+
+Set `renderPendingComponent={null}` to disable shimmer entirely.
+
+---
+
+## Prop Validation
+
+When a `registry` is passed to the Renderer, mdocUI validates component props against their Zod schemas after streaming completes. Invalid props trigger a console warning:
+
+```
+[mdocui] <chart> invalid props: Expected string, received number at "title"
+```
+
+This catches LLM hallucinations early. Pass the registry to enable:
+
+```tsx
+<Renderer
+  nodes={nodes}
+  components={defaultComponents}
+  registry={registry}
+/>
+```
+
+Validation only runs when `isStreaming` is `false`, so it never blocks the live stream.
+
+---
+
 MIT License · Built by [pnutmath](https://github.com/pnutmath)
