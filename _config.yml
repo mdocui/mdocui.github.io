@@ -1,9 +1,11 @@
 title: mdocUI
 description: Generative UI library for LLMs using Markdoc tag syntax inline with markdown prose
+url: https://mdocui.github.io
 remote_theme: just-the-docs/just-the-docs@v0.10.1
 plugins:
   - jekyll-remote-theme
 color_scheme: dark
 aux_links:
+  Live Demo: https://mdocui.vercel.app
   GitHub: https://github.com/mdocui/mdocui
   npm: https://www.npmjs.com/org/mdocui
