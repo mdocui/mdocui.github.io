@@ -13,6 +13,8 @@ LLMs write natural markdown **and** drop interactive UI components in the same s
 pnpm add @mdocui/core @mdocui/react
 ```
 
+![mdocUI demo](https://raw.githubusercontent.com/mdocui/.github/main/assets/demo.gif)
+
 ---
 
 ## What it looks like
